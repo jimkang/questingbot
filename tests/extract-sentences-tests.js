@@ -7,7 +7,8 @@ var extractSentences = ExtractSentences({
 var testCases = [
     {
       text: 'Searching Airbnb for a spot in Nice, France when magic happened... https://t.co/DKGxvj3vyE',
-      expected: [ [ 'Searching',
+      expected: [
+        [ 'Searching',
         'Airbnb',
         'for',
         'a',
@@ -17,21 +18,12 @@ var testCases = [
         'France',
         'when',
         'magic',
-        'happened' ] ]
-    [ [ 'Searching',
-        'Airbnb',
-        'for',
-        'a',
-        'spot',
-        'in',
-        'Nice',
-        'France',
-        'when',
-        'magic',
-        'happened' ] ]
+        'happened' ]
+      ]
     },
     {
       text: 'Today\'s niche observation: the claymore is indespensable to deal with the toxic rats so you can properly get under The Royal Rat Authority',
+      // TODO: Handle apostrophes.
       expected: [ [ 'Today',
         's',
         'niche',
@@ -60,6 +52,15 @@ var testCases = [
     {
       text: 'Fire Hand-light',
       expected: [ [ 'Fire', 'Hand', 'light' ] ]
+    },
+    {
+      text: 'Ye find yeself in yon dungeon. Ye see a SCROLL. Behind ye scroll is a FLASK. Obvious exits are NORTH, SOUTH and DENNIS.',
+      expected: [
+      [ 'Ye', 'find', 'yeself', 'in', 'yon', 'dungeon' ],
+      [ 'Ye', 'see', 'a', 'SCROLL' ],
+      [ 'Behind', 'ye', 'scroll', 'is', 'a', 'FLASK' ],
+      [ 'Obvious', 'exits', 'are', 'NORTH', 'SOUTH', 'and', 'DENNIS' ]
+    ]
     }
 ];
 

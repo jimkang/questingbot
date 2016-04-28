@@ -17,7 +17,7 @@ function ExtractSentences(createOpts) {
   function collectSentencesFromParagraph(sentences, paragraphNode) {
     if (paragraphNode.children) {
       sentences = sentences.concat(
-        paragraphNode.children.map(wordArrayFromSentenceNode)
+        paragraphNode.children.filter(isSentence).map(wordArrayFromSentenceNode)
       );
     }
     return sentences;
@@ -29,6 +29,10 @@ function ExtractSentences(createOpts) {
     var textNodes = flatten(pluck(wordNodes, 'children')).filter(isText);
     return pluck(textNodes, 'value');
   }
+}
+
+function isSentence(n) {
+  return n.type === 'SentenceNode';
 }
 
 function isWord(n) {
